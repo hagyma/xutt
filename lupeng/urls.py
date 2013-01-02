@@ -1,6 +1,9 @@
 from django.conf.urls import patterns, include, url
 from filebrowser.sites import site
+from django.conf import settings
 
+from pages.views import index
+from menu.views import show_menu_content
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -18,4 +21,16 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/filebrowser/', include(site.urls)),
+
+    url(r'^$', index, name='index'),
+
+    url(r'^$/(?P<slug>\w+)/', show_menu_content, name='show_content'),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        url(r'^%s/(?P<path>.*)$' % settings.STATIC_URL.strip('/'), "django.views.static.serve", {"document_root": settings.STATIC_ROOT}),
+    )
+    urlpatterns += patterns('',
+        url(r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/'), "django.views.static.serve", {"document_root": settings.MEDIA_ROOT}),
+    )

@@ -11,6 +11,12 @@ class Page(models.Model):
     title = models.CharField(max_length=30, blank=True, verbose_name=u'Title')
     description = models.TextField(verbose_name=u'Content')
 
+    class Media:
+        js = [
+            '/static/admin/tinymce/jscripts/tiny_mce/tiny_mce.js',
+            '/static/path/to/your/tinymce_setup.js',
+        ]
+
     class Meta:
         translate = ('title', 'description', )
 

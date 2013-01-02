@@ -20,7 +20,7 @@ ORDER_CHOICES = (
 class Menu(models.Model):
     __metaclass__ = TransMeta
 
-    order = models.IntegerField(choices=ORDER_CHOICES, )
+    order = models.IntegerField(choices=ORDER_CHOICES, unique=True)
     title = models.CharField(max_length=30, blank=True, verbose_name=u'Title')
     slug = AutoSlugField(populate_from='title')
 

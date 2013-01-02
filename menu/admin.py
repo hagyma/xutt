@@ -4,6 +4,6 @@ from models import Menu
 
 class MenuAdmin(admin.ModelAdmin):
     list_display = ( 'order', 'title' )
-    ordering = ('order')
+    ordering = ('order', )
 
 admin.site.register(Menu, MenuAdmin)
