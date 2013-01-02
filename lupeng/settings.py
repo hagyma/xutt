@@ -32,7 +32,19 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+    ('en', u'English'),
+    ('ch', u'China'),
+)
+
+TRANSMETA_DEFAULT_LANGUAGE = 'en'
+
+TRANSMETA_LANGUAGES = (
+    ('en', u'English'),
+    ('ch', u'China'),
+)
 
 SITE_ID = 1
 
@@ -109,6 +121,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'filebrowser',
+
+    'menu',
+    'pages',
 
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
