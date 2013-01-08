@@ -59,7 +59,7 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-MEDIA_ROOT = os.path.join(PROJECT_PATH, "media/")
+MEDIA_ROOT = os.path.join(PROJECT_PATH, "../media/")
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_PATH, "../static_deployment/")
 STATIC_URL = '/static/'
@@ -84,7 +84,6 @@ SECRET_KEY = '-x$!wbbi_hztp^bwud9*37y53m1e)0(4*ss8*w^w)(vlfsnjah'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    'dbtemplates.loader.Loader',
 )
 
 TEMPLATE_DIRS = (
@@ -125,12 +124,12 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'filebrowser',
-    'dbtemplates',
     'transmeta',
 
     'menu',
     'pages',
-
+    
+    'gunicorn',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -227,3 +226,4 @@ ADMIN_THUMBNAIL = getattr(settings, 'FILEBROWSER_ADMIN_THUMBNAIL', 'admin_thumbn
 PLACEHOLDER = getattr(settings, "FILEBROWSER_PLACEHOLDER", "")
 SHOW_PLACEHOLDER = getattr(settings, "FILEBROWSER_SHOW_PLACEHOLDER", False)
 FORCE_PLACEHOLDER = getattr(settings, "FILEBROWSER_FORCE_PLACEHOLDER", False)
+
