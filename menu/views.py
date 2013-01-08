@@ -1,5 +1,6 @@
 from django.template.response import TemplateResponse
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 from models import Menu
 from pages.models import Page
@@ -9,10 +10,7 @@ def show_menu_content(request, slug):
 
     menu_slug = slug
 
-    try:
-        page = Page.objects.get(menu__slug_en=slug)
-    except:
-        pass
+    page = get_object_or_404(Page, menu__slug_en=slug)
 
     context = {
         'page': page,
