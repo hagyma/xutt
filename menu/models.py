@@ -4,18 +4,11 @@ from transmeta import TransMeta
 
 from autoslug import AutoSlugField
 
-ORDER_CHOICES = (
-    (1, 'First'),
-    (2, 'Second'),
-    (3, 'Third'),
-    (4, 'Fourth'),
-    (5, 'Fifth'),
-    (6, 'Sixth'),
-    (7, 'Seventh'),
-    (8, 'Eighth'),
-    (9, 'Ninth'),
-    (10, 'Tenth'),
-    )
+MAX_ORDER = 10
+
+ORDER_CHOICES = [(i,i) for i in xrange(0, MAX_ORDER+1)]
+
+ORDER_CHOICES[0] = (0, 'Main')
 
 class Menu(models.Model):
     __metaclass__ = TransMeta
@@ -28,4 +21,4 @@ class Menu(models.Model):
         translate = ('title', 'slug', )
 
     def __unicode__(self):
-        return self.title
+        return '%s, (%s)' %  (self.title_en, self.title_zh_cn)

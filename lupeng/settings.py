@@ -36,14 +36,14 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
     ('en', u'English'),
-    ('ch', u'China'),
+    ('zh-cn', u'Chinese'),
 )
 
 TRANSMETA_DEFAULT_LANGUAGE = 'en'
 
 TRANSMETA_LANGUAGES = (
     ('en', u'English'),
-    ('ch', u'China'),
+    ('zh_cn', u'Chinese'),
 )
 
 SITE_ID = 1
@@ -84,11 +84,20 @@ SECRET_KEY = '-x$!wbbi_hztp^bwud9*37y53m1e)0(4*ss8*w^w)(vlfsnjah'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    'dbtemplates.loader.Loader',
 )
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, '../templates/'),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.media',
+    'django.core.context_processors.i18n',
+    'menu.context_processors.menu_items',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -97,6 +106,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -105,12 +115,6 @@ ROOT_URLCONF = 'lupeng.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'lupeng.wsgi.application'
-
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -121,6 +125,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'filebrowser',
+    'dbtemplates',
+    'transmeta',
 
     'menu',
     'pages',

@@ -21,10 +21,11 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/filebrowser/', include(site.urls)),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 
     url(r'^$', index, name='index'),
 
-    url(r'^$/(?P<slug>\w+)/', show_menu_content, name='show_content'),
+    url(r'^(?P<slug>\w+)/', show_menu_content, name='show_content'),
 )
 
 if settings.DEBUG:

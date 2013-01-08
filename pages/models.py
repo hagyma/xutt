@@ -9,7 +9,7 @@ class Page(models.Model):
 
     menu = models.ForeignKey(Menu)
     title = models.CharField(max_length=30, blank=True, verbose_name=u'Title')
-    description = models.TextField(verbose_name=u'Content')
+    content = models.TextField(verbose_name=u'Content')
 
     class Media:
         js = [
@@ -18,7 +18,7 @@ class Page(models.Model):
         ]
 
     class Meta:
-        translate = ('title', 'description', )
+        translate = ('title', 'content', )
 
     def __unicode__(self):
         return self.title
