@@ -1,52 +1,101 @@
 {% load i18n %}
 
-<html>
-    <head>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} Lü Peng -{% block subtitle %} Curator, Art historian{% endblock %}{% endblock %} </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <style>
+
+    </style>
+    <!--<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">-->
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+
+    <header id="header" class="container">
+        {% block header %}
 
         {% block languages %}
+
             {% get_language_info_list for LANGUAGES as languages %}
-            <div id="languages" style="float:right">
-               <table >
-                 <tr>
-                   {% for lang in languages %}
-                   <td>
-                        <form action="/i18n/setlang/" method="post">{% csrf_token %}
-                            <input type="hidden" name="language" value="{{lang.code}}"/>
-                            <input id="lang_{{lang.code}}" type="submit" {% comment %}src="/media/http_frontend/img/{{ lang.0 }}.gif" alt="{{ lang.1 }}" {% endcomment %} value="{{ lang.name_local }}"/>
-                        </form>
-                   </td>
-                   {% endfor %}
-                 </tr>
-               </table>
+            <div id="languages" style="text-align:right" class="row clearfix">
+               {% for lang in languages %}
+                    <form action="/i18n/setlang/" method="post" style="margin:0; display:inline;">{% csrf_token %}
+                        <input type="hidden" name="language" value="{{lang.code}}"/>
+                        <input id="lang_{{lang.code}}" class="lang_button" type="submit" {% comment %}src="/media/http_frontend/img/{{ lang.0 }}.gif" alt="{{ lang.1 }}" {% endcomment %} value="{{ lang.name_local }}"/>
+                    </form>
+               {% endfor %}
             </div>
-
-            {% comment %}
-            <div >
-                <form action="/i18n/setlang/" method="post">
-                {% csrf_token %}
-                <input name="next" type="hidden" value="{{ redirect_to }}" />
-                <select name="language">
-                {% get_language_info_list for LANGUAGES as languages %}
-                {% for language in languages %}
-                <option value="{{ language.code }}">{{ language.name_local }} ({{ language.code }})</option>
-                {% endfor %}
-                </select>
-                <input type="submit" value="Go" />
-                </form>
-
-            </div>
-            {% endcomment %}
-        {% endblock %}
-
-        {% block menus %}
-
-        {% include 'menus.inc.html' %}
 
         {% endblock %}
 
-        {% block content %}{% endblock %}
+        <div id="site_title">
 
-    </body>
+            <div id="title_wrapper">
+            <h1 id="title"> Lü Peng </span>
+            </div>
+
+            <div id="subtitle_wrapper" >
+                <span id="subtitle"> Curator, Art historian </span>
+            </div>
+
+        </div>
+
+        <div id="navigation_wrapper">
+            <nav id="navigation">
+
+            {% block menu %}
+                {% include 'menus.inc.html' %}
+            {% endblock %}
+
+            </nav>
+        </div>
+
+        {% endblock %}
+    </header>
+
+    <div id="content_wrapper" class="clearfix">
+        <div id="content" class="container">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+    </div>
+
+    <footer id="footer" class="container">
+        {% block footer %}
+            <span id="footer_text">&copy;2012 Lü Peng, Art Historian. All Rigths Reserved.</span>
+        {% endblock %}
+
+    </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/js/jquery-1.8.3.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+  </body>
 </html>
