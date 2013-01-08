@@ -7,7 +7,7 @@ from transmeta import TransMeta
 class Page(models.Model):
     __metaclass__ = TransMeta
 
-    menu = models.ForeignKey(Menu)
+    menu = models.ForeignKey(Menu, unique=True)
     title = models.CharField(max_length=30, blank=True, verbose_name=u'Title')
     content = models.TextField(verbose_name=u'Content')
 
