@@ -12,7 +12,7 @@ def show_menu_content(request, slug):
     try:
         page = Page.objects.get(menu__slug_en=slug)
     except:
-        return HttpResponse('<h1>Page was found</h1>')
+        pass
 
     context = {
         'page': page,
