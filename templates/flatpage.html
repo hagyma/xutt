@@ -1,0 +1,17 @@
+{% extends "flights/base.html" %}
+
+{% block content_top %}{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="box_style">
+
+        <h4 class="title"> {{ flatpage.title }}</h4>
+
+        <div class="box_content">
+        {{ flatpage.content|safe }}
+        </div>
+
+    </div>
+</div>
+{% endblock %}
