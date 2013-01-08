@@ -25,7 +25,6 @@ urlpatterns = patterns('',
 
     url(r'^$', index, name='index'),
 
-    url(r'^(?P<slug>\w+)/', show_menu_content, name='show_content'),
 )
 
 if settings.DEBUG:
@@ -34,4 +33,8 @@ if settings.DEBUG:
     )
     urlpatterns += patterns('',
         url(r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/'), "django.views.static.serve", {"document_root": settings.MEDIA_ROOT}),
+    )
+
+urlpatterns += patterns('',
+    url(r'^(?P<slug>\w+)/', show_menu_content, name='show_content'),
     )

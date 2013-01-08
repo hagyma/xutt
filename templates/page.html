@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 
-<div class="container">
-{% block content %}
+{% block content_left %}
+    {% if page.image %}
+    <div class="" style="float:left;max-width:400px; min-width:200px;">
+        <img src="{{ MEDIA_URL }}{{ page.image }}" />
+        {{ STATIC_URL }}
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block content_right %}
     {{ page.content|safe }}
 {% endblock %}
-</div>
