@@ -125,7 +125,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'filebrowser',
-    'dbtemplates',
     'transmeta',
 
     'menu',
