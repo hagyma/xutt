@@ -87,9 +87,6 @@ header{
 }
 
 .image_wrapper{
-    float:left;
-    max-width:400px;
-    min-width:200px;
     margin: 0 20px 0 0;
 }
 

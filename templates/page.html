@@ -2,14 +2,14 @@
 
 {% block content_left %}
     {% if page.image %}
-    <div class="image_wrapper">
+    <div class="image_wrapper span4">
         <img src="{{ MEDIA_URL }}{{ page.image }}" />
     </div>
     {% endif %}
 {% endblock %}
 
 {% block content_right %}
-<div class="clearfix" style="float:left">
+<div class="{% if not page.image %} span12 {% else %} span7 {% endif %}">
     {{ page.content|safe }}
 </div>
 {% endblock %}
