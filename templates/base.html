@@ -33,33 +33,40 @@
 
   <body>
 
-    <header id="header" class="container">
-        {% block header %}
+    <div id="header_wrapper">
 
-        <div id="site_title">
+        <header id="header" class="container">
+            {% block header %}
 
-            <div id="title_wrapper">
-                <h1 id="title"><a href="/"> Lü Peng </a></h1>
+            <div id="site_title">
+                <a href="/">
+                    <div id="title_wrapper">
+                        <div id="chines_title">
+                            <h1 class="title">呂鵬</h1>
+                        </div>
+                        <div id="english_title">
+                            <h1 class="title"> Lü Peng </h1>
+                            <div id="subtitle_wrapper" >
+                                <span id="subtitle"> Art Historian </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
 
-            <div id="subtitle_wrapper" >
-                <span id="subtitle"> Curator, Art historian </span>
+            <div id="navigation_wrapper">
+                <nav id="navigation">
+
+                {% block menu %}
+                    {% include 'menus.inc.html' %}
+                {% endblock %}
+
+                </nav>
             </div>
 
-        </div>
-
-        <div id="navigation_wrapper">
-            <nav id="navigation">
-
-            {% block menu %}
-                {% include 'menus.inc.html' %}
             {% endblock %}
-
-            </nav>
-        </div>
-
-        {% endblock %}
-    </header>
+        </header>
+    </div>
 
     <div id="content_wrapper" class="clearfix">
         <div id="content" class="container">
@@ -101,6 +108,17 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="/static/js/jquery-1.8.3.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function($){
+        var path = window.location.href; // Just grabbing a handy reference to it
+        $('ul a').each(function() {
+            if (this.href === path) {
+                $(this).addClass('active');
+            }
+        });
+    });
+    </script>
 
   </body>
 </html>
