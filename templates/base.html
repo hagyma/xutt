@@ -84,8 +84,14 @@
 
     <footer id="footer" class="container">
         {% block footer %}
-            {% block languages %}
+            <div id="footer_logos" class="row clearfix" style="text-align:right;">
+                {% for l in footer_logos %}
+                    <img src="{{ MEDIA_URL }}{{ l.logo}}" />
+                {% endfor %}
+            </div>
 
+            {% block languages %}
+            <div class="row clearfix">
             {% get_language_info_list for LANGUAGES as languages %}
             <div id="languages" style="float:left" class="row clearfix">
                {% for lang in languages %}
@@ -98,7 +104,8 @@
 
         {% endblock %}
 
-            <span id="footer_text">&copy;{% now "Y" %} Lü Peng, Art Historian. All Rigths Reserved.</span>
+                <span id="footer_text">{% for t in footer_text %} {{ t.text }} {% endfor %}</span>
+            </div>
         {% endblock %}
 
     </footer>
