@@ -95,6 +95,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.i18n',
     'menu.context_processors.menu_items',
+    'footer.context_processors.footer_text',
+    'footer.context_processors.footer_logos',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
 )
@@ -128,6 +130,7 @@ INSTALLED_APPS = (
 
     'menu',
     'pages',
+    'footer',
     
     'gunicorn',
     # Uncomment the next line to enable the admin:
