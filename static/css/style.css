@@ -81,7 +81,7 @@ header{
     color: #383838;
     font-size: 20px;
     line-height: 26px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     margin-top: 40px;
     margin-bottom: 40px;
 }
