@@ -48,6 +48,19 @@ header{
     text-decoration:none;
 }
 
+#header_left{
+    float:left;
+}
+
+#header_right{
+    float:left;
+    width: 690px;
+}
+
+#languages_wrapper{
+
+}
+
 #languages{
     text-align: right;
     background-color: #000000;
@@ -63,15 +76,6 @@ header{
 
 .lang_button:hover{
     color:#ffffff;
-}
-
-#header_left{
-    float:left;
-}
-
-#header_right{
-    float:left;
-    width:220px;
 }
 
 #title_wrapper{
@@ -115,8 +119,7 @@ header{
 
 #navigation_wrapper{
     float:left;
-    margin: 60px 0 0 10px;
-    width:465px;
+    margin: 30px 0 0 20px;
 }
 
 #navigation{
@@ -124,19 +127,19 @@ header{
 }
 
 #navigation ul{
+    height:40px;
     margin: 0;
-    padding: 0;
 }
 
 #navigation ul li{
     display: inline;
     list-style: none;
+    padding: 0 8px;
 }
 
 #navigation ul li a{
     color: #7c7c7c;
     text-decoration: none;
-    padding: 0 10px;
     /*margin: 0 10px;*/
 }
 
@@ -156,11 +159,16 @@ header{
     color: #7c7c7c;
     display:inline;
     margin: 0 10px 0 0;
-    cursor: default;
+    cursor:pointer;
+}
+
+#search_label:hover{
+    color: #ffffff;
 }
 
 #search_input{
     width:100px;
+    background-color: rgb( 0, 0 ,0, 0.8);
 }
 
 #content_wrapper{
