@@ -54,6 +54,22 @@
                 </a>
             </div>
 
+            <div class="row pull-right">
+            {% block languages %}
+           
+            {% get_language_info_list for LANGUAGES as languages %}
+            <div id="languages" style="float:left" class="row clearfix">
+               {% for lang in languages %}
+                    <form action="/i18n/setlang/" method="post" style="margin:0; display:inline;">{% csrf_token %}
+                        <input type="hidden" name="language" value="{{lang.code}}"/>
+                        <input id="lang_{{lang.code}}" class="lang_button" type="submit" {% comment %}src="/media/http_frontend/img/{{ lang.0 }}.gif" alt="{{ lang.1 }}" {% endcomment %} value="{{ lang.name_local }}"/>
+                    </form>
+               {% endfor %}
+            </div>
+
+            {% endblock %}
+            </div>
+
             <div id="navigation_wrapper">
                 <nav id="navigation">
 
@@ -89,21 +105,7 @@
                     <img src="{{ MEDIA_URL }}{{ l.logo}}" />
                 {% endfor %}
             </div>
-
-            {% block languages %}
-            <div class="row clearfix">
-            {% get_language_info_list for LANGUAGES as languages %}
-            <div id="languages" style="float:left" class="row clearfix">
-               {% for lang in languages %}
-                    <form action="/i18n/setlang/" method="post" style="margin:0; display:inline;">{% csrf_token %}
-                        <input type="hidden" name="language" value="{{lang.code}}"/>
-                        <input id="lang_{{lang.code}}" class="lang_button" type="submit" {% comment %}src="/media/http_frontend/img/{{ lang.0 }}.gif" alt="{{ lang.1 }}" {% endcomment %} value="{{ lang.name_local }}"/>
-                    </form>
-               {% endfor %}
-            </div>
-
-        {% endblock %}
-
+            <div class="row clearfix" style="text-align:center;">
                 <span id="footer_text">{% for t in footer_text %} {{ t.text }} {% endfor %}</span>
             </div>
         {% endblock %}
