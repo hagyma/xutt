@@ -61,6 +61,11 @@ header{
     float:left;
 }
 
+#header_right{
+    float:left;
+    width:220px;
+}
+
 #title_wrapper{
     float:left;
 }
@@ -140,12 +145,13 @@ header{
 }
 
 #search_label{
-    color: #ffffff;
+    color: #7c7c7c;
     display:inline;
+    margin: 0 10px 0 0;
 }
 
 #search_input{
-    border-radius: 0 !important;
+    width:100px;
 }
 
 #content_wrapper{
@@ -181,9 +187,9 @@ header{
     bottom: 60px;
     width:100%;
 }
-
+*/
 .logos{
     max-width: 100px;
     max-height: 50px;
+    margin: 0 10px 0 0;
 }
-*/

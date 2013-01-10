@@ -34,7 +34,7 @@
   <body>
 
     <div id="wrapper">
-        
+
     <div id="header_wrapper">
 
         <header id="header" class="container">
@@ -66,7 +66,7 @@
                 </nav>
             </div>
 
-            <div id="header_right" style="float:left">
+            <div id="header_right">
                 {% block languages %}
                
                 {% get_language_info_list for LANGUAGES as languages %}
@@ -82,8 +82,8 @@
                 {% endblock %}
 
                 <div id="search_wrapper" class="">
-                    <label id="search_label"> 搜索 Search: </label>
-                    <input id="search_input" class="span2" type="text" />
+                    <label id="search_label"> 搜索 Search </label>
+                    <input id="search_input" class="" type="search" />
                 </div>
 
             </div>
@@ -112,7 +112,7 @@
 
     <div class="footer">
         <div id="logos_wrapper" >
-            <div id="logos" class="container" style="text-align:right;">
+            <div id="logos" class="" style="text-align:right;">
                 {% for l in footer_logos %}
                     <img class="logos" src="{{ MEDIA_URL }}{{ l.logo}}" />
                 {% endfor %}
