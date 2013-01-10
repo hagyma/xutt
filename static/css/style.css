@@ -104,6 +104,7 @@ header{
 }
 
 #content_wrapper{
+    min-height: 500px;
     background-image: url('/static/img/content_bg.png');
     background-repeat: repeat;
 }
