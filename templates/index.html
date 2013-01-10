@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
-{% block content %}
+    {% block content_left %}
+        {% if main_page.image %}
+        <div class="image_wrapper span4">
+            <img src="{{ MEDIA_URL }}{{ main_page.image }}" />
+        </div>
+        {% endif %}
+    {% endblock %}
 
-    {{ main_page.content|safe }}
-
-{% endblock %}
+    {% block content_right %}
+    <div class="{% if not main_page.image %} span12 {% else %} span7 {% endif %}">
+        {{ main_page.content|safe }}
+    </div>
+    {% endblock %}
