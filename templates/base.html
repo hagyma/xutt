@@ -33,12 +33,14 @@
 
   <body>
 
+    <div id="wrapper">
+        
     <div id="header_wrapper">
 
         <header id="header" class="container">
             {% block header %}
 
-            <div id="site_title">
+            <div id="header_left">
                 <a href="/">
                     <div id="title_wrapper">
                         <div id="chines_title">
@@ -64,6 +66,28 @@
                 </nav>
             </div>
 
+            <div id="header_right" style="float:left">
+                {% block languages %}
+               
+                {% get_language_info_list for LANGUAGES as languages %}
+                <div id="languages" class="">
+                   {% for lang in languages %}
+                        <form action="/i18n/setlang/" method="post" style="margin:0; display:inline;">{% csrf_token %}
+                            <input type="hidden" name="language" value="{{lang.code}}"/>
+                            <input id="lang_{{lang.code}}" class="lang_button" type="submit" {% comment %}src="/media/http_frontend/img/{{ lang.0 }}.gif" alt="{{ lang.1 }}" {% endcomment %} value="{{ lang.name_local }}"/>
+                        </form>
+                   {% endfor %}
+                </div>
+
+                {% endblock %}
+
+                <div id="search_wrapper" class="">
+                    <label id="search_label"> 搜索 Search: </label>
+                    <input id="search_input" class="span2" type="text" />
+                </div>
+
+            </div>
+
             {% endblock %}
         </header>
     </div>
@@ -82,33 +106,29 @@
         </div>
     </div>
 
-    <footer id="footer" class="container">
-        {% block footer %}
-            <div id="footer_logos" class="row clearfix" style="text-align:right;">
+
+    <div class="push"></div>
+    </div>
+
+    <div class="footer">
+        <div id="logos_wrapper" >
+            <div id="logos" class="container" style="text-align:right;">
                 {% for l in footer_logos %}
-                    <img src="{{ MEDIA_URL }}{{ l.logo}}" />
+                    <img class="logos" src="{{ MEDIA_URL }}{{ l.logo}}" />
                 {% endfor %}
             </div>
+        </div>
 
-            {% block languages %}
-            <div class="row clearfix">
-            {% get_language_info_list for LANGUAGES as languages %}
-            <div id="languages" style="float:left" class="row clearfix">
-               {% for lang in languages %}
-                    <form action="/i18n/setlang/" method="post" style="margin:0; display:inline;">{% csrf_token %}
-                        <input type="hidden" name="language" value="{{lang.code}}"/>
-                        <input id="lang_{{lang.code}}" class="lang_button" type="submit" {% comment %}src="/media/http_frontend/img/{{ lang.0 }}.gif" alt="{{ lang.1 }}" {% endcomment %} value="{{ lang.name_local }}"/>
-                    </form>
-               {% endfor %}
+        <footer id="footer">
+            <div id="footer_wrapper" class="container">
+            {% block footer %}
+                <div class="row clearfix" style="text-align:center;">
+                    <span id="footer_text">{% for t in footer_text %} {{ t.text }} {% endfor %}</span>
+                </div>
+            {% endblock %}
             </div>
-
-        {% endblock %}
-
-                <span id="footer_text">{% for t in footer_text %} {{ t.text }} {% endfor %}</span>
-            </div>
-        {% endblock %}
-
-    </footer>
+        </footer>
+    </div>
 
     <!-- Le javascript
     ================================================== -->

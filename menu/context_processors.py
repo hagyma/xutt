@@ -3,5 +3,5 @@ from django.conf import settings
 
 def menu_items(request):
     return {
-        'menu_items': Menu.objects.all(),
+        'menu_items': Menu.objects.all().exclude(order=0).order_by('order'),
     }
