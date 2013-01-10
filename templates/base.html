@@ -88,6 +88,9 @@
                     </nav>
 
                 </div>
+                <div id="search_form">
+                     <input type="search" id="search_input" />
+                </div>
 
             </div>
 
@@ -146,6 +149,10 @@
             if (this.href === path) {
                 $(this).addClass('active');
             }
+        });
+
+        $('#search_label').live('click', function(){
+            $('#search_form').toggle();
         });
     });
     </script>
