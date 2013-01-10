@@ -40,6 +40,14 @@ header{
     
 }
 
+#back_to_main{
+    text-decoration: none;
+}
+
+#back_to_main:hover{
+    text-decoration:none;
+}
+
 #languages{
     text-align: right;
     background-color: #000000;
