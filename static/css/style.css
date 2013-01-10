@@ -156,6 +156,7 @@ header{
     color: #7c7c7c;
     display:inline;
     margin: 0 10px 0 0;
+    cursor: default;
 }
 
 #search_input{
