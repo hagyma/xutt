@@ -93,7 +93,7 @@ header{
 }
 
 .title{
-    line-height: 45px;
+    line-height: 50px;
     color: #f8f8f8;
     font-weight: normal;
 }
@@ -120,7 +120,7 @@ header{
 
 #navigation_wrapper{
     float:left;
-    margin: 45px 0 0 20px;
+    margin: 50px 0 0 20px;
 }
 
 #navigation{
@@ -156,7 +156,7 @@ header{
 #search_form{
     display:none;
     float:left;
-    margin:35px 0 0 0;
+    margin:40px 0 0 0;
 }
 
 #search_wrapper{
