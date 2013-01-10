@@ -10,6 +10,11 @@ def footer_text(request):
     }
 
 def footer_logos(request):
+    try:
+        footer_logos = Footer_Logos.objects.all().order_by('order')
+    except:
+        pass
+
     return {
-        'footer_logos': Footer_Logos.objects.all().order_by('order'),
+        'footer_logos': footer_logos,
     }
