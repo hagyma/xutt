@@ -13,7 +13,7 @@ def footer_logos(request):
     try:
         footer_logos = Footer_Logos.objects.all().order_by('order')
     except:
-        pass
+        footer_logos = ''
 
     return {
         'footer_logos': footer_logos,
