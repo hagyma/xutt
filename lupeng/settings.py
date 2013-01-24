@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'menu',
     'pages',
     'footer',
+    'archives',
     
     'gunicorn',
     # Uncomment the next line to enable the admin:
