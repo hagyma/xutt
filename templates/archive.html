@@ -3,20 +3,91 @@
 {% block content %}
 
     {% block content_left %}
-    <div class="span6">
-    <p>
-    	<a href="{% url archives_projects %}">Projects</a>
-    </p>
-    <p>
-    	<a href="{% url archives_publications %}">Publications</a>
-	</p>
-	<p>
-    	<a href="{% url archives_books %}">Books</a>
-    </p>
 
-	</div>
+
+	<div class="span4">
+	<div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                      Projects
+                    </a>
+                  </div>
+                  <div id="collapseOne" class="accordion-body collapse {% if not project_item %} in {% endif %}">
+                    <div class="accordion-inner">
+                      <ul class="">
+						{% for project in projects %}
+						<li><a href="{% url archives %}?project={{ project.pk }}" {% if project_item %}{% if project_item.pk == project.pk %} class="active"{% endif %}{% endif %}>{{ project.title }}</a></li>
+						{% endfor %}
+						</ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                      Publications
+                    </a>
+                  </div>
+                  <div id="collapseTwo" class="accordion-body collapse {% if not publication_item %}in{% endif %}">
+                    <div class="accordion-inner">
+                      <ul class="">
+						{% for publication in publications %}
+							<li><a href="{% url archives %}?publication={{ publication.pk }}" {% if publication_item %}{% if publication_item.pk == publication.pk %} class="active"{% endif %}{% endif %}>{{ publication.title }}</a></li>
+						{% endfor %}
+						</ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                      Books
+                    </a>
+                  </div>
+                  <div id="collapseThree" class="accordion-body collapse {% if not book_item %}in{% endif %}">
+                    <div class="accordion-inner">
+                      <ul class="">
+						{% for book in books %}
+							<li><a href="{% url archives %}?book={{ book.pk }}" {% if book_item %}{% if book_item.pk == book.pk %} class="active"{% endif %}{% endif %}>{{ book.title }}</a></li>
+						{% endfor %}
+						</ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
     {% endblock %}
 
-    {% block content_right %}{% endblock %}
+    {% block content_right %}
+    <div class="span7">
+    	{% if project_item %}
+    		<h5>{{ project_item.title }}</h5>
+    		<p>{{ project_item.description }}</p>
+
+    		{% if project_item.image %}
+    			<img src="{{ MEDIA_URL }}{{ project_item.image }}" />
+    		{% endif %}
+    	{% endif %}
+
+    	{% if publication_item %}
+    		<h5>{{ publication_item.title }}</h5>
+    		<p>{{ publication_item.description }}</p>
+
+    		{% if publication_item.image %}
+    			<img src="{{ MEDIA_URL }}{{ publication_item.image }}" />
+    		{% endif %}
+    	{% endif %}
+
+    	{% if book_item %}
+    		<h5>{{ book_item.title }}</h5>
+    		<p>{{ book_item.description }}</p>
+
+    		{% if book_item.image %}
+    			<img src="{{ MEDIA_URL }}{{ book_item.image }}" />
+    		{% endif %}
+    	{% endif %}
+	</div>
+    {% endblock %}
 
 {% endblock %}
