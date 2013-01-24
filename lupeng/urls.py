@@ -27,8 +27,6 @@ urlpatterns = patterns('',
 
     url(r'^archives/$', 'archives.views.archive', name='archives'),
 
-
-
 )
 
 if settings.DEBUG:
