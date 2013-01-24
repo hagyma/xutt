@@ -6,72 +6,42 @@ from models import Project, Publication, Book
 def archive(request):
 	template_name = 'archive.html'
 
-	context = {}
-
-	return TemplateResponse(request, template_name, context)
-
-def project(request):
-	template_name = 'archiveproject.html'
-
 	projects = Project.objects.all()
-
-	context = {
-		'projects': projects,
-	}
-
-	return TemplateResponse(request, template_name, context)
-
-def project_item(request, pk):
-	template_name = 'archiveitem.html'
-
-	item = Project.objects.get(pk=pk)
-
-	context = {
-		'item': item,
-	}
-
-	return TemplateResponse(request, template_name, context)
-
-def publication(request):
-	template_name = 'archivepublication.html'
 
 	publications = Publication.objects.all()
 
-	context = {
-		'publications': publications,
-	}
-
-	return TemplateResponse(request, template_name, context)
-
-def publication_item(request, pk):
-	template_name = 'archiveitem.html'
-
-	item = Publication.objects.get(pk=pk)
-
-	context = {
-		'item': item,
-	}
-
-	return TemplateResponse(request, template_name, context)
-
-def book(request):
-	template_name = 'archivebook.html'
-
 	books = Book.objects.all()
 
+	project_pk = request.GET.get('project', None)
+	
+	project_item = None
+
+	if project_pk:
+		project_item = Project.objects.get(pk=project_pk)
+
+	publication_pk = request.GET.get('publication', None)
+
+	publication_item = None
+
+	if publication_pk:
+		publication_item = Publication.objects.get(pk=publication_pk)
+
+	book_pk = request.GET.get('book', None)
+
+	book_item = None
+
+	if book_pk:
+		book_item = Book.objects.get(pk=book_pk)
+
 	context = {
-		'books':books,
+		'projects': projects,
+		'project_item': project_item,
+		'publication_item': publication_item,
+		'book_item': book_item,
+		'publications': publications,
+		'books': books,
 	}
 
 	return TemplateResponse(request, template_name, context)
 
-def book_item(request, pk):
-	template_name = 'archiveitem.html'
 
-	item = Book.objects.get(pk=pk)
-
-	context = {
-		'item': item,
-	}
-
-	return TemplateResponse(request, template_name, context)
