@@ -1,0 +1,13 @@
+{% extends 'archive.html' %}
+
+{% block content_right %}
+
+<div class="span5">
+	<ul class="unstyled">
+	{% for book in books %}
+		<li><a href="{% url archives_books_item book.pk %}">{{ book.title }}</a></li>
+	{% endfor %}
+	</ul>
+</div>
+
+{% endblock %}

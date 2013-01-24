@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% block content_left %}
+    <div class="span6">
+    <p>
+    	<a href="{% url archives_projects %}">Projects</a>
+    </p>
+    <p>
+    	<a href="{% url archives_publications %}">Publications</a>
+	</p>
+	<p>
+    	<a href="{% url archives_books %}">Books</a>
+    </p>
+
+	</div>
+    {% endblock %}
+
+    {% block content_right %}{% endblock %}
+
+{% endblock %}
