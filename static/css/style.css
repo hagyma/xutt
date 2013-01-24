@@ -198,6 +198,10 @@ header{
     margin-bottom: 40px;
 }
 
+.items{
+    color: #000 !important;
+}
+
 .image_wrapper{
     margin: 0 20px 0 0;
 }
