@@ -26,12 +26,8 @@ urlpatterns = patterns('',
     url(r'^$', index, name='index'),
 
     url(r'^archives/$', 'archives.views.archive', name='archives'),
-    url(r'^archives/projects/$', 'archives.views.project', name='archives_projects'),
-    url(r'^archives/projects/(?P<pk>\d+)/$', 'archives.views.project_item', name='archives_projects_item'),
-    url(r'^archives/publications/$', 'archives.views.publication_item', name='archives_publications'),
-    url(r'^archives/publications/(?P<pk>\d+)/$', 'archives.views.publication', name='archives_publications_item'),
-    url(r'^archives/books/$', 'archives.views.book', name='archives_books'),
-    url(r'^archives/books/(?P<pk>\d+)/$', 'archives.views.book_item', name='archives_books_item'),
+
+
 
 )
 
