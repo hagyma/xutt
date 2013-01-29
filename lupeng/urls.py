@@ -5,6 +5,8 @@ from django.conf import settings
 from pages.views import index
 from menu.views import show_menu_content
 
+from archives.views import Projects, Publications, Books
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -25,7 +27,9 @@ urlpatterns = patterns('',
 
     url(r'^$', index, name='index'),
 
-    url(r'^archives/$', 'archives.views.archive', name='archives'),
+    url(r'^projects/$', Projects.as_view(), name='projects'),
+    url(r'^publications/$', Publications.as_view(), name='publications'),
+    url(r'^books/$', Books.as_view(), name='books'),
 
 )
 
