@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content_left %}
+
+<div class="span4">
+
+	<ul class="unstyled">
+	{% for book in books %}
+	<li>
+		<a href="{% url books %}?book={{ book.pk }}" {% if book_item %}{% if book_item.pk == book.pk %} class="active items"{% endif %}{% endif %}>{{ book.title }}</a>
+	</li>
+	{% endfor %}
+	</ul>
+
+</div>
+
+{% endblock content_left %}
+
+{% block content_right %}
+<div class="span7">
+    {% if book_item %}
+    	<h3>{{ book_item.title }}</h3>
+    	<p>{{ book_item.description|safe }}</p>
+
+    	{% if book_item.image %}
+    		<img src="{{ MEDIA_URL }}{{ book_item.image }}" />
+    	{% endif %}
+    {% endif %}
+</div>
+
+{% endblock content_right %}

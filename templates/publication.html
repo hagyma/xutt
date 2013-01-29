@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content_left %}
+
+<div class="span4">
+
+	<ul class="unstyled">
+	{% for publication in publications %}
+	<li>
+		<a href="{% url publications %}?publication={{ publication.pk }}" {% if publication_item %}{% if publication_item.pk == publication.pk %} class="active items"{% endif %}{% endif %}>{{ publication.title }}</a>
+	</li>
+	{% endfor %}
+	</ul>
+
+</div>
+
+{% endblock content_left %}
+
+{% block content_right %}
+<div class="span7">
+    {% if publication_item %}
+    	<h3>{{ publication_item.title }}</h3>
+    	<p>{{ publication_item.description|safe }}</p>
+
+    	{% if publication_item.image %}
+    		<img src="{{ MEDIA_URL }}{{ prublication_item.image }}" />
+    	{% endif %}
+    {% endif %}
+</div>
+
+{% endblock content_right %}
