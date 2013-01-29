@@ -1,10 +1,13 @@
 Django==1.4.3
 Pillow==1.7.8
+South==0.7.6
 argparse==1.2.1
 django-appconf==0.5
 django-autoslug==1.6.1
 django-filebrowser==3.5.1
 django-grappelli==2.4.3
+gevent==0.13.8
+greenlet==0.4.0
+gunicorn==0.17.2
 ipython==0.13.1
-gunicorn 
-gevent
+wsgiref==0.1.2
