@@ -153,7 +153,9 @@
             }
         });
 
-        $(".collapse").collapse();
+        $('p').each(function(){
+            $(this).html($(this).html().replace(/&nbsp;/gi,' '));
+        });
     });
     </script>
 
