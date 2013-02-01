@@ -4,7 +4,7 @@
 
 <div class="span4">
 
-	<ul class="unstyled">
+	<ul class="unstyled lists">
 	{% for project in projects %}
 	<li>
 		<a href="{% url projects %}?project={{ project.pk }}" {% if project_item %}{% if project_item.pk == project.pk %} class="active items"{% endif %}{% endif %}>{{ project.title }}</a>
