@@ -2,7 +2,7 @@ from lupeng.settings import *
 
 ADMINS = (
     ('pabe', '19noname19@gmail.com'),
-    ('beta', 'mr.bence.tamas@gmail.com'),
+
 )
 
 DATABASES = {
